@@ -10,6 +10,7 @@ yargs.command({
 			describe: 'Titlul notitei',
 			demandOption: true,
 			type: 'string'
+
 		},
         body: {
             describe: 'Continutul notitei',
@@ -47,5 +48,6 @@ yargs.command({
 })
 
 yargs.parse();
+
 
 
