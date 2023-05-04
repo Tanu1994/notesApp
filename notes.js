@@ -15,15 +15,22 @@ const writeNotes = (notes) => {
 }
 
 const addNote = function(title, body) {
-    console.log(`Adauga notite cu titlul: ${title} `, `cu continutul ${body} `);
-
     // citim datele din fisier
     const notes = loadNotes();
     console.log(notes);
     // verificam existenta notitei in fisier
-    // adaugam notita la obiectul javascript, si modificam fisierul
-    notes.push({title: title, body: body});
-    writeNotes(notes);
+    const duplicateNotes = notes.filter(function (note) {
+        return note.title === title;
+    })
+    if (duplicateNotes.length === 0) {
+        // adaugam notita la obiectul javascript, si modificam fisierul
+        notes.push({title: title, body: body});
+        writeNotes(notes);
+        console.log(`Adauga notite cu titlul: ${title} `, `cu continutul ${body} `);
+    } else {
+        console.log(`Notita cu titlul ${title} deja exista.`);
+    }
+    
     
 }
 
