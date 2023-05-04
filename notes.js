@@ -7,9 +7,11 @@ const loadNotes = () => {
         return JSON.parse(dataString);
     } catch(e){
         return [];
-    }
-    
-     
+    }  
+}
+
+const writeNotes = (notes) => {
+    fs.writeFileSync('notes.json',JSON.stringify(notes));
 }
 
 const addNote = function(title, body) {
@@ -20,7 +22,8 @@ const addNote = function(title, body) {
     console.log(notes);
     // verificam existenta notitei in fisier
     // adaugam notita la obiectul javascript, si modificam fisierul
-
+    notes.push({title: title, body: body});
+    writeNotes(notes);
     
 }
 
