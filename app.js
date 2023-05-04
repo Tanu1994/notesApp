@@ -1,3 +1,5 @@
+
+const notes = require("./notes.js");
 const yargs = require('yargs');
 console.log("Hello!");
 yargs.version('1.1.0');
@@ -19,9 +21,12 @@ yargs.command({
         }
 	},
 	handler: function (argv) {
-		console.log(`Adauga notite cu titlul: ${argv.title} `, `cu continutul ${argv.body} `);
+    notes.addNote(argv.title, argv.body)
+    
 	}
 })
+
+
 
 yargs.command({
 	command: 'remove',
