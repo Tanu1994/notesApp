@@ -43,5 +43,3 @@ module.exports = {
   addNote: addNote,
   removeNote: removeNote,
 };
-
-console.log("MESAJ")
