@@ -12,5 +12,32 @@ const eveniment = {
         })
     }
 }
-
 eveniment.printeazaInvitati();
+
+// Creați un obiect numit tasks care va conține o proprietate taskList 
+// (array de obiecte) cu proprietățile text (string) și completed (boolean).
+// Includeți trei task-uri în taskList array (unul complet și două incomplete 
+// (completed false). Creați o metodă în obiect (getToDoTasks) în care veți 
+// folosi filter pentru a afișa task-urile incomplete.
+const tasks = {
+    taskList: [
+        {
+            text: 'spalat rufe',
+            completed: true
+        },
+        {
+            text: 'spalat bani',
+            completed: false
+        },
+        {
+            text: 'gatit money',
+            completed: false
+        }
+    ],
+    getTaskToDo() {
+      return this.taskList.filter((task) => task.completed == false)
+    }
+}
+
+console.log(tasks.getTaskToDo());
+
