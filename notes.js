@@ -1,39 +1,45 @@
 const fs = require('fs');
 
 const loadNotes = () => {
-    try{
-        const dataBuffer = fs.readFileSync('notes.json');
-        const dataString = dataBuffer.toString();
-        return JSON.parse(dataString);
-    } catch(e){
-        return [];
-    }  
-}
+  try {
+    const dataBuffer = fs.readFileSync('notes.json');
+    const dataString = dataBuffer.toString();
+    return JSON.parse(dataString);
+  } catch (e) {
+    return [];
+  }
+};
 
 const writeNotes = (notes) => {
-    fs.writeFileSync('notes.json',JSON.stringify(notes));
-}
+  fs.writeFileSync('notes.json', JSON.stringify(notes));
+};
 
-const addNote = function(title, body) {
-    // citim datele din fisier
-    const notes = loadNotes();
-    console.log(notes);
-    // verificam existenta notitei in fisier
-    const duplicateNotes = notes.filter(function (note) {
-        return note.title === title;
-    })
-    if (duplicateNotes.length === 0) {
-        // adaugam notita la obiectul javascript, si modificam fisierul
-        notes.push({title: title, body: body});
-        writeNotes(notes);
-        console.log(`Adauga notite cu titlul: ${title} `, `cu continutul ${body} `);
-    } else {
-        console.log(`Notita cu titlul ${title} deja exista.`);
-    }
-    
-    
-}
+const addNote = (title, body) => {
+  const notes = loadNotes();
+  const duplicateNote = notes.find((note) => note.title === title);
+
+  if (!duplicateNote) {
+    notes.push({ title: title, body: body });
+    writeNotes(notes);
+    console.log(`Adaugă notițe cu titlul: ${title} și conținutul: ${body}`);
+  } else {
+    console.log(`Notița cu titlul ${title} există deja.`);
+  }
+};
+
+const removeNote = (title) => {
+  const notes = loadNotes();
+  const filteredNotes = notes.filter((note) => note.title !== title);
+
+  if (notes.length > filteredNotes.length) {
+    writeNotes(filteredNotes);
+    console.log(`Notița cu titlul ${title} a fost ștearsă.`);
+  } else {
+    console.log(`Nu există nicio notiță cu titlul ${title}.`);
+  }
+};
 
 module.exports = {
-    addNote: addNote
-}
+  addNote: addNote,
+  removeNote: removeNote,
+};
