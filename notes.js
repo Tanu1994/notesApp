@@ -30,10 +30,18 @@ const addNote = function(title, body) {
     } else {
         console.log(`Notita cu titlul ${title} deja exista.`);
     }
-    
-    
 }
+const showNotes = () => {
+	const notes = loadNotes();
+	if (notes.length === 0) {
+		return `nu exista notite create, creati una!`
+	}
+	return notes;
+};
 
 module.exports = {
-    addNote: addNote
+    addNote: addNote,
+	loadNotes: loadNotes,
+	writeNotes: writeNotes,
+	showNotes: showNotes
 }

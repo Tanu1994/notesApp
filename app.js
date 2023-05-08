@@ -1,5 +1,6 @@
 
 const notes = require("./notes.js");
+const removeNote = require('./remove.js');
 const yargs = require('yargs');
 console.log("Hello!");
 yargs.version('1.1.0');
@@ -31,8 +32,15 @@ yargs.command({
 yargs.command({
 	command: 'remove',
 	describe: 'Sterge o notita',
-	handler: function() {
-		console.log('sterge notita');
+	builder: {
+		title: {
+			describe: 'Titlul notitei',
+			demandOption: true,
+			type: 'string'
+		}
+	},
+	handler: function(argv) {
+		removeNote.removeNote(argv.title);
 	}
 })
 
@@ -40,8 +48,10 @@ yargs.command({
 	command: 'list',
 	describe: 'prezinta lista de notite',
 	handler: function() {
-		console.log('lista de notite');
+		const note = notes.showNotes();
+		console.log(`Notitele tale: ${note}`);
 	}
+	
 })
 
 yargs.command({
