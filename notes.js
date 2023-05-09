@@ -39,6 +39,18 @@ const removeNote = (title) => {
   }
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+
+  if (notes.length > 0) {
+    console.log("Notitele tale:");
+    notes.forEach((note) => {
+      console.log(note.title);
+    });
+  } else {
+    console.log("Nu exista nicio notita.");
+  }
+};
 
 
 module.exports = {
