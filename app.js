@@ -38,11 +38,19 @@ yargs.command({
   },
 });
 
+// yargs.command({
+//   command: 'list',
+//   describe: 'prezinta lista de notite',
+//   handler: function () {
+//     console.log('lista de notite');
+//   },
+// });
+
 yargs.command({
   command: 'list',
   describe: 'prezinta lista de notite',
   handler: function () {
-    console.log('lista de notite');
+    notes.listNotes();
   },
 });
 

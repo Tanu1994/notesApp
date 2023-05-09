@@ -39,7 +39,10 @@ const removeNote = (title) => {
   }
 };
 
+
+
 module.exports = {
   addNote: addNote,
   removeNote: removeNote,
+  listNotes: listNotes,
 };
