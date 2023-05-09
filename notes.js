@@ -16,9 +16,9 @@ const writeNotes = (notes) => {
 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNote = notes.find((note) => note.title === title);
+  const duplicateNotes = notes.filter((note) => note.title === title);
 
-  if (!duplicateNote) {
+  if (duplicateNotes.length === 0) {
     notes.push({ title: title, body: body });
     writeNotes(notes);
     console.log(`Adaugă notițe cu titlul: ${title} și conținutul: ${body}`);
