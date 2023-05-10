@@ -50,8 +50,15 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'citeste o notita',
-  handler: function () {
-    console.log('prezinta notita');
+  builder: {
+    title: {
+      describe: 'afiseaza notita',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: function (argv) {
+  notes.readNotes(argv.title);
   },
 });
 
