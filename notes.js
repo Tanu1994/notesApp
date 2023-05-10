@@ -36,7 +36,9 @@ const showNotes = () => {
 	if (notes.length === 0) {
 		return `nu exista notite create, creati una!`
 	}
-	return notes;
+	notes.forEach(element => {
+		console.log(`Notitele tale: ${element.title}`);
+	});
 };
 
 module.exports = {

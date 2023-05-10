@@ -48,8 +48,8 @@ yargs.command({
 	command: 'list',
 	describe: 'prezinta lista de notite',
 	handler: function() {
-		const note = notes.showNotes();
-		console.log(`Notitele tale: ${note}`);
+		notes.showNotes();
+		
 	}
 	
 })
