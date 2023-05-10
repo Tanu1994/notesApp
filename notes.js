@@ -40,10 +40,24 @@ const showNotes = () => {
 		console.log(`Notitele tale: ${element.title}`);
 	});
 };
+const giveNote = (title, body) => {
+	const notes = loadNotes();
+	if (notes.length === 0) {
+		console.log('Creati o notita nici una existenta');
+	} else {
+		let searchedNote = notes.find((note) => title === note.title)
+		if (!searchedNote) {
+			console.log(`Notita cu ${title} nu exista`);
+		} else {
+			console.log(`Notita: ${searchedNote.title} ${searchedNote.body}`);
+		}
+	}
+}
 
 module.exports = {
     addNote: addNote,
 	loadNotes: loadNotes,
 	writeNotes: writeNotes,
-	showNotes: showNotes
+	showNotes: showNotes,
+	giveNote: giveNote
 }
