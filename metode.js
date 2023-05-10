@@ -41,3 +41,9 @@ const tasks = {
 
 console.log(tasks.getTaskToDo());
 
+
+// Creați comanda de listare a notițelor:
+// - În notes.js creați o metodă pentru listarea notițelor
+// - Metoda va afișa un titlu: "Notițele tale" urmat de fiecare titlu al notițelor pe fiecare rând
+// - Dacă nu există nicio notiță, afișați un mesaj corespunzător.
+// - Apelați metoda în handler-ul comenzii.
